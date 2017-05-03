@@ -8,7 +8,7 @@ require 'omah'
 class DummyOmah < Omah
 
   def initialize(user: 'user', filepath: '.', mail: {}, \
-               options: {xslt: 'listing.xsl'}, plugins: [])
+               options: {xslt: 'listing.xsl'}, plugins: [], url_base: nil)
 
     @mail = {user_name: '',  password: '' }.merge mail
         
@@ -16,7 +16,8 @@ class DummyOmah < Omah
 
     @variables = {user_name: @mail[:user_name], email_address: @email_address}
     
-    super(user: user, filepath: filepath, plugins: plugins, options: options)        
+    super(user: user, filepath: filepath, plugins: plugins, options: options, 
+          url_base: url_base)        
 
   end
 
@@ -24,8 +25,8 @@ class DummyOmah < Omah
 
     messages = a.map.inject([]) do |r, x|
 
-      r << Hash[%i(id from to subject date body_text body_html attachments)\
-                                                                  .zip(a[0])]
+      r << Hash[%i(id from to subject date body_text body_html 
+                attachments raw_source).zip(a[0])]
     end
 
     # messages are stored in the file dynarexdaily.xml
