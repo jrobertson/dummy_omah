@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name = 'dummy_omah'
-  s.version = '0.1.1'
+  s.version = '0.1.2'
   s.summary = 'Simulates receiving email messages for testing Omah (Offline Mail Helper) gem plugins etc.'
   s.authors = ['James Robertson']
   s.files = Dir['lib/dummy_omah.rb']
