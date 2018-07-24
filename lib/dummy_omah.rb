@@ -8,7 +8,7 @@ require 'omah'
 class DummyOmah < Omah
 
   def initialize(user: 'user', filepath: '.', mail: {}, \
-               options: {xslt: 'listing.xsl'}, plugins: [])
+               options: {xslt: 'listing.xsl'}, plugins: [], webpath: '/email')
 
     @mail = {user_name: '',  password: '' }.merge mail
         
@@ -16,7 +16,8 @@ class DummyOmah < Omah
 
     @variables = {user_name: @mail[:user_name], email_address: @email_address}
     
-    super(user: user, filepath: filepath, plugins: plugins, options: options)        
+    super(user: user, filepath: filepath, plugins: plugins, 
+          options: options, webpath: webpath)
 
   end
 
